@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace Week1ObjectOriented.Classes
 {
-    public class Circle : Shape
+    public class Circle : IShape
     {
-        public override int GetArea()
+        public double Radius { get; set; }
+        public string Colour { get; set; }
+
+        public Circle(double radius = 5)
         {
-            throw new NotImplementedException();
+            Radius = radius;
+        }
+
+        public double GetArea()
+        {
+            return Math.PI * Radius * Radius;
         }
     }
-
 }
+
