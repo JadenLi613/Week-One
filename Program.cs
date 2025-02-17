@@ -1,44 +1,30 @@
-﻿// See https://aka.ms/new-console-template for more information
 using Week1ObjectOriented.Classes;
 
-var square = new Square(10);
-
-try
+class Program
 {
+    static void Main()
+    {
+
+        var square = new Square(5);
+        var circle = new Circle(7);
+        var triangle = new Triangle(6, 8);
 
 
-    square.SetArea(2);
+        IShape[] shapes = { square, circle, triangle };
+
+        foreach (var shape in shapes)
+        {
+            ShapeColourHelper.AddColour(shape);
+            Console.WriteLine($"{shape.GetType().Name} - Area: {shape.GetArea()}, Colour: {shape.Colour}");
+        }
 
 
-    Console.WriteLine("The area is " + square.GetArea());
+        foreach (var shape in shapes)
+        {
+            ShapeColourHelper.ChangeColour(shape);
+            Console.WriteLine($"{shape.GetType().Name} - New Colour: {shape.Colour}");
+        }
+
+        Console.ReadLine();
+    }
 }
-catch(Exception ex)
-{
-    Console.WriteLine(ex.Message);
-}
-
-
-
-
-var circle = new Circle();
-
-ShapeColourHelper.AddColour(circle);
-
-
-
-
-
-ShapeColourHelper.AddColour(square);
-
-Console.WriteLine(square.Colour);
-
-ShapeColourHelper.ChangeColour(square);
-
-Console.WriteLine(square.Colour);
-
-
-Console.ReadLine();
-
-
-
-
