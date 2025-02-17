@@ -1,4 +1,3 @@
-﻿
 using Week1ObjectOriented.Interfaces;
 
 namespace Week1ObjectOriented.Classes
@@ -6,13 +5,14 @@ namespace Week1ObjectOriented.Classes
     public class Square : Shape, IFaces
     {
         private int side;
+        
+        public const int Sides = 4;
 
-        public Square(int s) 
+        public Square(int s)
         {
-            
-            if (s > 10)
+            if (s <= 0 || s > 10)
             {
-                throw new Exception("Cannot be greater then 10");
+                throw new Exception("Side length must be greater than 0 and less than or equal to 10.");
             }
 
             side = s;
@@ -22,20 +22,22 @@ namespace Week1ObjectOriented.Classes
 
         public void SetSide(int s)
         {
+            if (s <= 0 || s > 10)
+            {
+                throw new Exception("Side length must be greater than 0 and less than or equal to 10.");
+            }
+
             side = s;
         }
 
-        public override int GetArea()
+        public override double GetArea()
         {
             return side * side; 
         }
 
         public int GetFaces()
         {
-            throw new NotImplementedException();
+            return 6;
         }
-
-        public readonly int Sides;
-
     }
 }
